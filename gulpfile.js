@@ -34,4 +34,4 @@ gulp.task('watch',function () {
 
 // default task
 
-gulp.task('default',['scripts','sass', 'watch']);
+gulp.task('default',['scripts', 'watch']);
