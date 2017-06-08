@@ -1,0 +1,31 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sonatype.training</groupId>
+    <artifactId>explicit-staging-example</artifactId>
+    <version>1.0.0</version>
+
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <url>http://localhost:8081/nexus/content/repositories/releases</url>
+        </repository>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.local</groupId>
+                <artifactId>nexus-local-maven</artifactId>
+                <version>1.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>nexus-releases</serverId>
+                    <nexusUrl>http://localhost:8081/nexus/</nexusUrl>
+                    <!-- update this to the correct id! -->
+                    <stagingProfileId>1296f79efe04a4d0</stagingProfileId>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
