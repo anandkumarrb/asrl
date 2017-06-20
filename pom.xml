@@ -7,20 +7,25 @@
     <packaging>zip</packaging>
     <name>Simple Multi Modules Build</name>
 
-     <build>
+    <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+     </properties> 
+      <build>
     <plugins>
-      <plugin>       
+      <plugin>
         <executions>
           <execution>
-            <id>add-source</id>
-            <phase>generate-sources</phase>
+            <id>add-resource</id>
+            <phase>generate-resources</phase>
             <goals>
-              <goal>add-source</goal>
+              <goal>add-resource</goal>
             </goals>
             <configuration>
-              <sources>
-                <source>ww.zip</source>
-              </sources>
+              <resources>
+                <resource>
+                  <directory>ww.zip</directory>                  
+                </resource>
+              </resources>
             </configuration>
           </execution>
         </executions>
