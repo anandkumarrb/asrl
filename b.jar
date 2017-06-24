@@ -1,0 +1,25 @@
+C:\Users\Sysadmin\Downloads\apache-maven-3.5.0-bin (1)\apache-maven-3.5.0\
+
+node {
+   def mvnHome
+   stage('Preparation') {
+      git 'https://github.com/anandkumarrb/asrl.git'
+      mvnHome = tool 'maven3.5'
+   }
+   stage('Build') {
+      println 'build passed';
+   }
+   stage('Results') {
+     println 'resulted';
+     // Advice: don't define M2_HOME in general. Maven will autodetect its root fine.
+withEnv(["JAVA_HOME=${ tool 'jdk1.8' }", "PATH+MAVEN=${tool 'maven3.5'}/bin:${env.JAVA_HOME}/bin"]) {
+
+    sh "jar"
+
+}
+   }
+   stage('Publish') {
+     nexusPublisher nexusInstanceId: '12345', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'explicit-staging-example.war']], 
+     mavenCoordinate: [artifactId: 'explicit-staging-example', groupId: 'com.sonatype.training', packaging: 'war', version: '1.0.7']]]
+   }
+}
