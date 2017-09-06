@@ -1,0 +1,3 @@
+[submodule "angularjs-lms"]
+	path = angularjs-lms
+	url = https://github.com/anandkumarrb/angularjs-lms.git
